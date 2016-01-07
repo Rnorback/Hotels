@@ -1,0 +1,19 @@
+PODS:
+  - Alamofire (2.0.0)
+  - Kingfisher (1.9.1)
+  - MBProgressHUD (0.9.2)
+  - SwiftyJSON (2.3.2)
+
+DEPENDENCIES:
+  - Alamofire (= 2.0.0)
+  - Kingfisher (~> 1.9)
+  - MBProgressHUD (~> 0.9.1)
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: 2f13548b29d25a58ecd91c9225fb51493e2b782b
+  Kingfisher: 98fedd5d44d982b331fc7303f9f6144b7d8ba289
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+
+COCOAPODS: 0.39.0

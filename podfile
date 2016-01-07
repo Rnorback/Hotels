@@ -1,0 +1,9 @@
+platform :ios, "8.0"
+use_frameworks!
+
+target 'Hotels' do
+  pod 'Alamofire','2.0.0'
+  pod 'SwiftyJSON'
+  pod 'MBProgressHUD', '~> 0.9.1'
+  pod 'Kingfisher', '~> 1.9'
+end
