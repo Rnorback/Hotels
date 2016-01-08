@@ -16,15 +16,19 @@ class HotelTableVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //Show spinner
+        loadHotelDataForLocation(.SanFran)
+    }
+    
+    func loadHotelDataForLocation(location:Location) {
         startSpinner()
-        HotelModelManager.getHotelsForLocation(.SanFran) { (hotelsArray) -> Void in
+        HotelModelManager.getHotelsForLocation(location, completion: { (hotelsArray) -> Void in
             self.hotelsArray = hotelsArray
             self.tableView.reloadData()
-            //Stop spinner
             self.stopSpinner()
-        }
+            }, errorBlock : { (alertController) -> Void in
+                self.presentViewController(alertController, animated: true, completion: nil)
+                self.stopSpinner()
+        })
     }
     
     func startSpinner() {
@@ -39,30 +43,16 @@ class HotelTableVC: UITableViewController {
 
     @IBAction func segmentControlValueChanged(segmentedControl: UISegmentedControl) {
         if let city = segmentedControl.titleForSegmentAtIndex(segmentedControl.selectedSegmentIndex) {
+            // Get data for city and reload the tableView
             switch city {
             case "San Francisco":
-                // Start spinner
-                startSpinner()
-                HotelModelManager.getHotelsForLocation(.SanFran) { (hotelsArray) -> Void in
-                    self.hotelsArray = hotelsArray
-                    self.tableView.reloadData()
-                    //Stop spinner
-                    self.stopSpinner()
-                }
+                loadHotelDataForLocation(.SanFran)
             case "Minneapolis":
-                // Start spinner
-                startSpinner()
-                HotelModelManager.getHotelsForLocation(.Minneapolis) { (hotelsArray) -> Void in
-                    self.hotelsArray = hotelsArray
-                    self.tableView.reloadData()
-                    //Stop spinner
-                    self.stopSpinner()
-                }
+                loadHotelDataForLocation(.Minneapolis)
             default:
                 break
             }
         }
-        
     }
     
     // MARK: - Table view data source
@@ -91,13 +81,11 @@ class HotelTableVC: UITableViewController {
     }
         
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "detailSegue" {
             if let vc = segue.destinationViewController as? HotelDetailVC {
+                // Pass the data for the selected hotel to the detail view controller
                 let indexPath = tableView.indexPathForSelectedRow
                 vc.hotelData = hotelsArray[indexPath!.row]
             }

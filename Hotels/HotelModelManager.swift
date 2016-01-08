@@ -22,11 +22,10 @@ struct Hotel {
 // This class is in charge of deserializing the web requests and passing them on in a completion block
 class HotelModelManager {
 
-    class func getHotelsForLocation(location:Location, completion:([Hotel])->Void) {
+    class func getHotelsForLocation(location:Location, completion:([Hotel])->Void, errorBlock:(UIAlertController)->Void) {
         WebServices.getHotelDataForLocation(location, completion: { (json) -> Void in
             let data = json["body"]["HotelListResponse"]["HotelList"]["HotelSummary"]
             var hotels:[Hotel] = []
-            //print(data)
             for hotelData in data.arrayValue {
                 let name = hotelData["name"].stringValue
                 let starRating = hotelData["hotelRating"].intValue
@@ -42,7 +41,11 @@ class HotelModelManager {
             
             completion(hotels)
             }, errorBlock: { (error) -> Void in
-                print("Error retrieving hotels in \(location.rawValue): \(error.localizedDescription)")
+                // Create an alert when there is an error and pass it in the error block
+                let alertController = UIAlertController(title: "Error Retrieving Hotels in \(location.rawValue)", message:
+                    "\(error.localizedDescription)", preferredStyle: UIAlertControllerStyle.Alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
+                errorBlock(alertController)
         })
     }
 }
