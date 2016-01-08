@@ -16,6 +16,7 @@
 		93AE5E231C3E0A260040826E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93AE5E211C3E0A260040826E /* LaunchScreen.storyboard */; };
 		93AE5E2F1C3E0D890040826E /* HotelDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AE5E2E1C3E0D890040826E /* HotelDetailVC.swift */; };
 		93AE5E311C3E0DA70040826E /* HotelMapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93AE5E301C3E0DA70040826E /* HotelMapVC.swift */; };
+		93F1EFDC1C3F64CF006220DF /* HotelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93F1EFDB1C3F64CF006220DF /* HotelTableViewCell.swift */; };
 		FA7EFB98C78B6A0A7FD3B0BC /* Pods_Hotels.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 342911B2CC44C1371186E310 /* Pods_Hotels.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +35,7 @@
 		93AE5E241C3E0A260040826E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93AE5E2E1C3E0D890040826E /* HotelDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailVC.swift; sourceTree = "<group>"; };
 		93AE5E301C3E0DA70040826E /* HotelMapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelMapVC.swift; sourceTree = "<group>"; };
+		93F1EFDB1C3F64CF006220DF /* HotelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,17 +57,6 @@
 				669F0945969FD5C9292CEE77 /* Pods-Hotels.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		93341AEB1C3E105E002F4E66 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				93AE5E1C1C3E0A260040826E /* Main.storyboard */,
-				93AC53661C3E1CC20043AC22 /* HotelTableVC.swift */,
-				93AE5E2E1C3E0D890040826E /* HotelDetailVC.swift */,
-				93AE5E301C3E0DA70040826E /* HotelMapVC.swift */,
-			);
-			name = Views;
 			sourceTree = "<group>";
 		};
 		93AE5E0C1C3E0A260040826E = {
@@ -90,7 +81,11 @@
 			isa = PBXGroup;
 			children = (
 				93AE5E181C3E0A260040826E /* AppDelegate.swift */,
-				93341AEB1C3E105E002F4E66 /* Views */,
+				93AE5E1C1C3E0A260040826E /* Main.storyboard */,
+				93AC53661C3E1CC20043AC22 /* HotelTableVC.swift */,
+				93F1EFDB1C3F64CF006220DF /* HotelTableViewCell.swift */,
+				93AE5E2E1C3E0D890040826E /* HotelDetailVC.swift */,
+				93AE5E301C3E0DA70040826E /* HotelMapVC.swift */,
 				93341AEC1C3E1079002F4E66 /* HotelModelManager.swift */,
 				93341AEE1C3E11CA002F4E66 /* WebServices.swift */,
 				93AE5E1F1C3E0A260040826E /* Assets.xcassets */,
@@ -233,6 +228,7 @@
 				93341AED1C3E1079002F4E66 /* HotelModelManager.swift in Sources */,
 				93341AEF1C3E11CA002F4E66 /* WebServices.swift in Sources */,
 				93AC53671C3E1CC20043AC22 /* HotelTableVC.swift in Sources */,
+				93F1EFDC1C3F64CF006220DF /* HotelTableViewCell.swift in Sources */,
 				93AE5E2F1C3E0D890040826E /* HotelDetailVC.swift in Sources */,
 				93AE5E311C3E0DA70040826E /* HotelMapVC.swift in Sources */,
 				93AE5E191C3E0A260040826E /* AppDelegate.swift in Sources */,

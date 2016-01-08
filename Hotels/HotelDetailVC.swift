@@ -11,7 +11,6 @@ import Kingfisher
 
 class HotelDetailVC: UIViewController {
     
-    
     @IBOutlet var hotelImageView: UIImageView!
     @IBOutlet var hotelNameLabel: UILabel!
     @IBOutlet var hotelStarRatingLabel: UILabel!
@@ -22,11 +21,15 @@ class HotelDetailVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        hotelImageView.kf_setImageWithURL(NSURL(string: hotelData.imageUrl)!)
-        print(hotelData.imageUrl)
+        //Populate the detail view
         hotelNameLabel.text = hotelData.name
-        hotelStarRatingLabel.text = String(hotelData.starRating)
-        hotelPriceLabel.text = "$\(hotelData.price)"
+        hotelImageView.kf_setImageWithURL(NSURL(string: hotelData.imageUrl)!,placeholderImage: UIImage(named: "placeholder"))
+        hotelStarRatingLabel.text = "\(hotelData.starRating) Star Rating"
+        hotelPriceLabel.text = "$\(hotelData.price) Per Night"
+        
+        //Round the edges of the image
+        hotelImageView.layer.cornerRadius = 5
+        hotelImageView.clipsToBounds = true
     }
 
     

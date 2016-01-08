@@ -60,14 +60,14 @@ class HotelTableVC: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("hotelCell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("hotelCell", forIndexPath: indexPath) as! HotelTableViewCell
         
         // Configure the cell...
         if hotelsArray.count != 0 {
             let hotel = hotelsArray[indexPath.row]
-            cell.textLabel?.text = hotel.name
-            cell.detailTextLabel?.text = "$\(hotel.price)"
-            cell.imageView?.kf_setImageWithURL(NSURL(string: hotel.thumbnailUrl)!,placeholderImage: nil)
+            cell.hotelNameLabel.text = hotel.name
+            cell.hotelPriceLabel.text = "$\(hotel.price) per night"
+            cell.hotelImageView.kf_setImageWithURL(NSURL(string: hotel.imageUrl)!,placeholderImage: UIImage(named: "placeholder"))
         }
         
         return cell
