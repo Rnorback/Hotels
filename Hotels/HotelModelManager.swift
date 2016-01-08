@@ -24,6 +24,7 @@ class HotelModelManager {
 
     class func getHotelsForLocation(location:Location, completion:([Hotel])->Void, errorBlock:(UIAlertController)->Void) {
         WebServices.getHotelDataForLocation(location, completion: { (json) -> Void in
+            
             let data = json["body"]["HotelListResponse"]["HotelList"]["HotelSummary"]
             var hotels:[Hotel] = []
             for hotelData in data.arrayValue {
@@ -38,8 +39,8 @@ class HotelModelManager {
                 let hotel = Hotel(imageUrl: imageUrl, thumbnailUrl: thumbnailUrl, name: name, starRating: starRating, price: price, location: location)
                 hotels.append(hotel)
             }
-            
             completion(hotels)
+            
             }, errorBlock: { (error) -> Void in
                 // Create an alert when there is an error and pass it in the error block
                 let alertController = UIAlertController(title: "Error Retrieving Hotels in \(location.rawValue)", message:
