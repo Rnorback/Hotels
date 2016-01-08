@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import MBProgressHUD
 
 class HotelTableVC: UITableViewController {
    
@@ -16,12 +17,24 @@ class HotelTableVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Start spinner
+        //Show spinner
+        startSpinner()
         HotelModelManager.getHotelsForLocation(.SanFran) { (hotelsArray) -> Void in
             self.hotelsArray = hotelsArray
             self.tableView.reloadData()
             //Stop spinner
+            self.stopSpinner()
         }
+    }
+    
+    func startSpinner() {
+        let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        loadingNotification.mode = MBProgressHUDMode.Indeterminate
+        loadingNotification.labelText = "Loading"
+    }
+    
+    func stopSpinner() {
+        MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
     }
 
     @IBAction func segmentControlValueChanged(segmentedControl: UISegmentedControl) {
@@ -29,17 +42,21 @@ class HotelTableVC: UITableViewController {
             switch city {
             case "San Francisco":
                 // Start spinner
+                startSpinner()
                 HotelModelManager.getHotelsForLocation(.SanFran) { (hotelsArray) -> Void in
                     self.hotelsArray = hotelsArray
                     self.tableView.reloadData()
                     //Stop spinner
+                    self.stopSpinner()
                 }
             case "Minneapolis":
                 // Start spinner
+                startSpinner()
                 HotelModelManager.getHotelsForLocation(.Minneapolis) { (hotelsArray) -> Void in
                     self.hotelsArray = hotelsArray
                     self.tableView.reloadData()
                     //Stop spinner
+                    self.stopSpinner()
                 }
             default:
                 break
